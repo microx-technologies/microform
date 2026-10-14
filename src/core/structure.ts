@@ -43,16 +43,17 @@ export function validateStructure<T extends string>(structure: FieldStructure<T>
         return;
       }
       if (isFieldRow(item)) {
-        if (!validateColumns(item.columns)) {
-          errors.push(`${at}: columns ${item.columns} out of range 1..${MAX_COLUMNS}`);
+        const columns = item.columns ?? MAX_COLUMNS;
+        if (!validateColumns(columns)) {
+          errors.push(`${at}: columns ${columns} out of range 1..${MAX_COLUMNS}`);
         }
         if (item.fields.length === 0) errors.push(`${at}: empty row`);
         for (const field of item.fields) {
           const span = field.colspan ?? 1;
           if (!validateColumns(span)) {
             errors.push(`${at}.${field.name}: colspan ${span} out of range 1..${MAX_COLUMNS}`);
-          } else if (validateColumns(item.columns) && span > item.columns) {
-            errors.push(`${at}.${field.name}: colspan ${span} exceeds columns ${item.columns}`);
+          } else if (validateColumns(columns) && span > columns) {
+            errors.push(`${at}.${field.name}: colspan ${span} exceeds columns ${columns}`);
           }
         }
         return;

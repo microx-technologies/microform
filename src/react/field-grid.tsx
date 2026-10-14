@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import type { FieldStructure, FieldType, StructureNode } from "../core/field";
 import { isFieldRow, isFieldSection } from "../core/field";
+import { MAX_COLUMNS } from "../core/structure";
 
 export interface FieldGridProps<T extends string> {
   structure: FieldStructure<T>;
@@ -46,7 +47,12 @@ function renderNodes<T extends string>(
     const rowId = item.fields.map((field) => field.name).join("+");
     const isLastNode = index === nodes.length - 1;
     return (
-      <div key={`row-${rowId}`} data-row="" data-columns={item.columns} data-align={alignItemsEnd ? "end" : "start"}>
+      <div
+        key={`row-${rowId}`}
+        data-row=""
+        data-columns={item.columns ?? MAX_COLUMNS}
+        data-align={alignItemsEnd ? "end" : "start"}
+      >
         {item.fields.map((field) => (
           <div key={field.name} data-field={field.name} data-colspan={field.colspan ?? 1}>
             {renderField(field)}

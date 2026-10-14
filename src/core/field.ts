@@ -8,16 +8,18 @@ export interface BaseField<T extends string> {
   readonly?: boolean;
   disabled?: boolean;
   persistKey?: string;
+  [key: string]: unknown;
 }
 
 export interface ControlFieldConfig {
   type: string;
+  [key: string]: unknown;
 }
 
 export type FieldType<T extends string> = BaseField<T> & ControlFieldConfig;
 
 export interface FieldRow<T extends string> {
-  columns: number;
+  columns?: number;
   fields: (FieldType<T> & { colspan?: number })[];
 }
 

@@ -6,15 +6,15 @@ export type AnyRenderer = FieldRendererFn<any, any, any>;
 export interface Microform<TType extends string = string> {
   register: <T extends TType>(type: T, renderer: AnyRenderer) => void;
   registerAll: (renderers: Partial<Record<TType, AnyRenderer>>) => void;
-  resolve: (type: TType) => AnyRenderer | undefined;
-  has: (type: TType) => boolean;
+  resolve: (type: string) => AnyRenderer | undefined;
+  has: (type: string) => boolean;
   types: () => TType[];
 }
 
 export function createMicroform<BuiltIn extends string, Custom extends string = never>(options: {
   controls: ReadonlyArray<{ type: BuiltIn; renderer: AnyRenderer }>;
 }): Microform<BuiltIn | Custom> {
-  const map = new Map<BuiltIn | Custom, AnyRenderer>();
+  const map = new Map<string, AnyRenderer>();
 
   for (const control of options.controls) {
     map.set(control.type, control.renderer);
@@ -36,7 +36,7 @@ export function createMicroform<BuiltIn extends string, Custom extends string = 
       return map.has(type);
     },
     types() {
-      return [...map.keys()];
+      return [...map.keys()] as (BuiltIn | Custom)[];
     },
   };
 }

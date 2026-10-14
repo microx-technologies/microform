@@ -1,17 +1,24 @@
 {
   "name": "microform",
-  "version": "0.2.0",
+  "version": "0.2.1",
   "description": "Headless form and field engine with typed registry, Zod defaults, async sources, and pluggable storage adapters.",
   "license": "MIT",
   "type": "module",
+  "types": "./src/index.ts",
   "exports": {
-    ".": "./src/index.ts",
-    "./react": "./src/react.ts",
+    ".": {
+      "types": "./src/index.ts",
+      "default": "./src/index.ts"
+    },
+    "./react": {
+      "types": "./src/react.ts",
+      "default": "./src/react.ts"
+    },
     "./package.json": "./package.json"
   },
   "sideEffects": false,
   "scripts": {
-    "build": "tsdown src/index.ts --dts --format esm --out-dir dist",
+    "build": "tsdown --dts --format esm --out-dir dist",
     "typecheck": "tsgo --noEmit",
     "typecheck:build": "tsgo --noEmit -p tsconfig.build.json",
     "lint": "biome check .",
