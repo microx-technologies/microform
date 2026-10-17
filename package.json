@@ -1,5 +1,5 @@
 {
-  "name": "@microx-technologies/microform",
+  "name": "microform",
   "version": "0.2.3",
   "description": "Headless form and field engine with typed registry, Zod defaults, async sources, and pluggable storage adapters.",
   "license": "AGPL-3.0",
