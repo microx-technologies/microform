@@ -72,6 +72,26 @@ jobs:
       - name: Pack tarball
         run: bun pm pack --filename microform.tgz
 
+      - name: Push compiled release branch and tag
+        run: |
+          VERSION="${{ github.ref_name }}"
+          TMP_COMPILED=$(mktemp -d)
+          cp -r dist "$TMP_COMPILED/dist"
+          cp package.json README.md LICENSE "$TMP_COMPILED/"
+
+          cd "$TMP_COMPILED"
+          git init
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git checkout -b "${VERSION}"
+          git add -A
+          git commit -m "release: ${VERSION} compiled distribution"
+
+          git remote add origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
+          git push -f origin "${VERSION}"
+          git tag -f "${VERSION}"
+          git push -f origin "${VERSION}"
+
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:
