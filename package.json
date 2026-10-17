@@ -2,7 +2,7 @@
   "name": "@microx-technologies/microform",
   "version": "0.2.3",
   "description": "Headless form and field engine with typed registry, Zod defaults, async sources, and pluggable storage adapters.",
-  "license": "MIT",
+  "license": "AGPL-3.0",
   "type": "module",
   "main": "./dist/index.js",
   "module": "./dist/index.js",
