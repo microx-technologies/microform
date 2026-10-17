@@ -18,9 +18,6 @@ No styles, no UI kit, no transport. `microform` owns the logic — types, regist
 
 ## Installation
 
-### Option 1: Git release branch / tag (Recommended — no tokens, no npm publish)
-The release branch `#v0.2.3` contains only precompiled bundles and TypeScript definitions without source code or test overhead:
-
 ```bash
 # bun
 bun add github:microx-technologies/microform#v0.2.3 zod
@@ -32,24 +29,7 @@ npm install github:microx-technologies/microform#v0.2.3
 pnpm add github:microx-technologies/microform#v0.2.3
 ```
 
-### Option 2: GitHub Packages (`npm.pkg.github.com`)
-1. Add `@microx-technologies` registry to your `.npmrc`:
-```text
-@microx-technologies:registry=https://npm.pkg.github.com
-```
-2. Install:
-```bash
-bun add @microx-technologies/microform zod
-# or npm
-npm install @microx-technologies/microform
-```
-
-### Option 3: Direct Release Tarball
-```bash
-bun add https://github.com/microx-technologies/microform/releases/download/v0.2.3/microform.tgz zod
-```
-
-Compiled distributions (`dist/`) and TypeScript definitions are packaged directly with zero repository overhead. Peer dependencies resolve from npm as usual:
+Peer dependencies resolve from npm as usual:
 
 | Peer            | Version | Needed for        |
 | --------------- | ------- | ----------------- |
@@ -241,8 +221,5 @@ Fields compose into structures of single fields and rows. `validateColumns` enfo
 Releases follow SemVer:
 
 ```bash
-# Via Git release branch / tag:
 bun add github:microx-technologies/microform#v0.2.3
-# Via GitHub Packages:
-bun add @microx-technologies/microform@0.2.3
 ```

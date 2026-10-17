@@ -29,9 +29,6 @@
     "type": "git",
     "url": "git+https://github.com/microx-technologies/microform.git"
   },
-  "publishConfig": {
-    "registry": "https://npm.pkg.github.com"
-  },
   "sideEffects": false,
   "scripts": {
     "build": "tsdown --dts --format esm --out-dir dist",

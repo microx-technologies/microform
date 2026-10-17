@@ -8,7 +8,6 @@ on:
 
 permissions:
   contents: write
-  packages: write
 
 concurrency:
   group: release-${{ github.ref }}
@@ -54,25 +53,7 @@ jobs:
       - name: Build
         run: bun run build
 
-      - name: Setup Node for GitHub Packages
-        uses: actions/setup-node@v4
-        with:
-          node-version: "20.x"
-          registry-url: "https://npm.pkg.github.com"
-          scope: "@microx-technologies"
-
-      - name: Publish to GitHub Packages
-        run: npm publish
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Pack dist
-        run: tar -czf microform-dist.tar.gz dist
-
-      - name: Pack tarball
-        run: bun pm pack --filename microform.tgz
-
-      - name: Push compiled release branch and tag
+      - name: Push compiled release branch
         run: |
           VERSION="${{ github.ref_name }}"
           TMP_COMPILED=$(mktemp -d)
@@ -94,6 +75,3 @@ jobs:
         uses: softprops/action-gh-release@v2
         with:
           generate_release_notes: true
-          files: |
-            microform-dist.tar.gz
-            microform.tgz
