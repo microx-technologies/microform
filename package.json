@@ -1,0 +1,63 @@
+{
+  "name": "microform",
+  "version": "0.2.3",
+  "description": "Headless form and field engine with typed registry, Zod defaults, async sources, and pluggable storage adapters.",
+  "license": "AGPL-3.0",
+  "type": "module",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
+    },
+    "./react": {
+      "types": "./dist/react.d.ts",
+      "import": "./dist/react.js",
+      "default": "./dist/react.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/microx-technologies/microform.git"
+  },
+  "sideEffects": false,
+  "scripts": {
+    "build": "tsdown --dts --format esm --out-dir dist",
+    "typecheck": "tsgo --noEmit",
+    "typecheck:build": "tsgo --noEmit -p tsconfig.build.json",
+    "lint": "biome check .",
+    "lint:fix": "biome check --write .",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:coverage": "vitest run --coverage"
+  },
+  "peerDependencies": {
+    "react": "^19",
+    "react-hook-form": "^7",
+    "zod": "^4"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "2.5.4",
+    "@types/react": "19.2.3",
+    "@types/react-dom": "19.2.3",
+    "@typescript/native-preview": "7.0.0-dev.20260707.2",
+    "@vitest/coverage-v8": "^4.1.11",
+    "happy-dom": "^20.10.6",
+    "react": "19.2.3",
+    "react-dom": "19.2.3",
+    "react-hook-form": "^7.81.0",
+    "tsdown": "^0.23.0",
+    "typescript": "^5.9.2",
+    "vitest": "^4.1.5",
+    "zod": "^4.3.6"
+  }
+}
