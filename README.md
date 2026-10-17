@@ -18,20 +18,26 @@ No styles, no UI kit, no transport. `microform` owns the logic — types, regist
 
 ## Installation
 
-Distributed through GitHub releases. No npm publish.
+Published to **GitHub Packages** (`npm.pkg.github.com`) under `@microx-technologies/microform`.
 
-```bash
-# bun
-bun add github:ynoacamino/microform#v0.1.1 zod
-
-# npm
-npm install github:ynoacamino/microform#v0.1.1
-
-# pnpm
-pnpm add github:ynoacamino/microform#v0.1.1
+1. Add `@microx-technologies` registry to your `.npmrc`:
+```text
+@microx-technologies:registry=https://npm.pkg.github.com
 ```
 
-Pin a tag for reproducible installs. The package is consumed straight from `src/` through the `exports` map, so there is no build step and no `dist/` in the repo. Peer dependencies resolve from npm as usual:
+2. Install with your package manager:
+```bash
+# bun
+bun add @microx-technologies/microform zod
+
+# npm
+npm install @microx-technologies/microform
+
+# pnpm
+pnpm add @microx-technologies/microform
+```
+
+Compiled distributions (`dist/`) and TypeScript definitions are packaged directly with zero repository overhead. Peer dependencies resolve from npm as usual:
 
 | Peer            | Version | Needed for        |
 | --------------- | ------- | ----------------- |
@@ -220,8 +226,10 @@ Fields compose into structures of single fields and rows. `validateColumns` enfo
 
 ## Versioning
 
-Releases are semver tags published to GitHub Releases. Pin the tag in your install string:
+Releases follow SemVer and are published to GitHub Packages and GitHub Releases:
 
 ```bash
-bun add github:ynoacamino/microform#v0.1.1
+bun add @microx-technologies/microform@0.2.2
+# or npm
+npm install @microx-technologies/microform@0.2.2
 ```

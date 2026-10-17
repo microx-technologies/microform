@@ -1,20 +1,36 @@
 {
-  "name": "microform",
-  "version": "0.2.1",
+  "name": "@microx-technologies/microform",
+  "version": "0.2.2",
   "description": "Headless form and field engine with typed registry, Zod defaults, async sources, and pluggable storage adapters.",
   "license": "MIT",
   "type": "module",
-  "types": "./src/index.ts",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
   "exports": {
     ".": {
-      "types": "./src/index.ts",
-      "default": "./src/index.ts"
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "default": "./dist/index.js"
     },
     "./react": {
-      "types": "./src/react.ts",
-      "default": "./src/react.ts"
+      "types": "./dist/react.d.ts",
+      "import": "./dist/react.js",
+      "default": "./dist/react.js"
     },
     "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/microx-technologies/microform.git"
+  },
+  "publishConfig": {
+    "registry": "https://npm.pkg.github.com"
   },
   "sideEffects": false,
   "scripts": {
