@@ -71,6 +71,11 @@ jobs:
           git remote add origin https://x-access-token:${{ secrets.GITHUB_TOKEN }}@github.com/${{ github.repository }}.git
           git push -f origin "${VERSION}"
 
+          if [[ "${VERSION}" != *-* ]]; then
+            git checkout -B latest
+            git push -f origin latest
+          fi
+
       - name: Create GitHub Release
         uses: softprops/action-gh-release@v2
         with:

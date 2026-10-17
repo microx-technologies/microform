@@ -19,14 +19,20 @@ No styles, no UI kit, no transport. `microform` owns the logic — types, regist
 ## Installation
 
 ```bash
-# bun
-bun add github:microx-technologies/microform#v0.2.3 zod
+# bun (latest stable release)
+bun add github:microx-technologies/microform#latest zod
 
 # npm
-npm install github:microx-technologies/microform#v0.2.3
+npm install github:microx-technologies/microform#latest zod
 
 # pnpm
-pnpm add github:microx-technologies/microform#v0.2.3
+pnpm add github:microx-technologies/microform#latest zod
+```
+
+Or pin to a specific release tag/branch:
+
+```bash
+bun add github:microx-technologies/microform#v0.2.3 zod
 ```
 
 Peer dependencies resolve from npm as usual:
@@ -221,5 +227,8 @@ Fields compose into structures of single fields and rows. `validateColumns` enfo
 Releases follow SemVer:
 
 ```bash
+# Latest stable release
+bun add github:microx-technologies/microform#latest
+# Pinned version:
 bun add github:microx-technologies/microform#v0.2.3
 ```
